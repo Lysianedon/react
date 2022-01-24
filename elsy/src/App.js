@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./DefaultValues";
 import DefaultValues from "./DefaultValues";
 import Steps from "./components/Steps";
-import "/Users/lysianedon/Documents/KONEXIO/react/chapitre-01/elsy/src/styles/global.css";
+import "./styles/global.css";
 
 const tempMin = -20;
 const tempMax = 40;

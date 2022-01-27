@@ -24,8 +24,8 @@ class Box extends React.Component {
                     (<div className="col-sm-3 col-6 box">
 
                     <span className="material-icons" style={{fontSize: 100, color: this.props.color}}>{this.props.icon}</span>
-                    <p>{this.props.value} {this.props.unit}</p>
-                    <input type="range" min="0" max="0" value="0" onInput={this.props.onInput}></input>
+                    <p>{this.props.value} {this.props.unit} </p>
+                    <input type="range" min={this.props.min} max={this.props.max} onChange={this.props.onChange}></input>
 
                 </div>)
                 

@@ -22,9 +22,10 @@ class App extends React.Component {
     super();
 
     this.state = {
-      water : 0,
+      water : 1.5,
       heart : 120,
       temperature : - 10,
+      extraTemp: 0,
       steps: 3000
     }
 
@@ -36,19 +37,45 @@ class App extends React.Component {
 
   //Functions to change the value of my boxes onChange input range :
 
+  calculateWater(n) {
+    this.setState((prevState) => {
+
+      if (this.state.temperature > 20) {
+        
+        return {water : 0.075 * prevState.temperature}
+
+      } else if (this.state.heart > 120) {
+        
+        return {water :  0.0125 * prevState.heart }
+
+      }else if (this.state.steps > 10000) {
+
+        return {water :  0.00015 * prevState.steps }
+
+      } else {
+
+        return  null;
+      }
+
+      
+    })
+  } 
+
   onHeartChange(e) {
     this.setState({heart : e.target.value});
+    this.calculateWater(2);
   }
 
   onStepsChange(e) {
     this.setState({steps : e.target.value});
+    this.calculateWater(2);
   }
+
 
   onTempChange(e) {
     this.setState({temperature : e.target.value});
+    this.calculateWater(2);
   }
-
-  // calculateWater() 
   
   render() {
     return (
@@ -57,7 +84,7 @@ class App extends React.Component {
           {/* <DefaultValues heartMin={heartMin} stepsMin={stepsMin} tempMin={tempMin} ></DefaultValues> */}
 
           {/* Water Box */}
-          <Box icon="local_drink" color="#3A85FF" value={1.5} unit="L"></Box>
+          <Box icon="local_drink" color="#3A85FF" value={this.state.water} unit="L"></Box>
 
           {/* Steps Box */}
           <Box icon="directions_walk" 

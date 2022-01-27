@@ -42,21 +42,20 @@ class App extends React.Component {
 
       if (this.state.temperature > 20) {
         
-        return {water : 0.075 * prevState.temperature}
+        return {water : prevState.water + (0.02 * (prevState.temperature - 20)) }
 
       } else if (this.state.heart > 120) {
         
-        return {water :  0.0125 * prevState.heart }
+        return {water : prevState.water + (0.0008 * (prevState.heart - 20)) }
 
-      }else if (this.state.steps > 10000) {
+      } else if (this.state.steps > 10000) {
 
-        return {water :  0.00015 * prevState.steps }
+        return {water : prevState.water + (0.00002 * (prevState.steps - 20))}
 
       } else {
 
         return  null;
       }
-
       
     })
   } 
